@@ -1,4 +1,13 @@
 <?php
+
+namespace models;
+
+use core\BaseSQL;
+use core\Routing;
+use corre\Users;
+use corre\View;
+
+
 class Users extends BaseSQL{
 
 	public $id = null;

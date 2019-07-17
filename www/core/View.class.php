@@ -1,4 +1,11 @@
 <?php
+
+namespace core;
+
+use controller\PageController;
+use controller\UsersController;
+
+
 class View{
 
 	private $v;

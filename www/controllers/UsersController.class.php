@@ -1,5 +1,12 @@
 <?php
 
+namespace controllers;
+
+use core\BaseSQL;
+use core\Routing;
+use corre\Users;
+use corre\View;
+
 class UsersController{
 
 	public function defaultAction(){
