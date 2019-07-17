@@ -1,9 +1,8 @@
 <?php
 
-use Core\Routing;
+use core\Routing;
 
 require "conf.inc.php";
-
 
 function myAutoloader($class) {
     $classPath = str_replace('\\', DIRECTORY_SEPARATOR, $class).'.class.php';
