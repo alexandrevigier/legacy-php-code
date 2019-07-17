@@ -1,4 +1,7 @@
 <?php
+
+namespace core;
+
 class BaseSQL{
 
 	private $pdo;
@@ -6,8 +9,8 @@ class BaseSQL{
 
 	public function __construct(){
 		try{
-			$this->pdo = new PDO(DBDRIVER.":host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
-			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->pdo = new \PDO(DBDRIVER.":host=".DBHOST.";dbname=".DBNAME,DBUSER,DBPWD);
+			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 		}catch(Exception $e){
 			die("Erreur SQL : ".$e->getMessage());
 		}
@@ -38,9 +41,9 @@ class BaseSQL{
 		$query = $this->pdo->prepare($sql);
 		
 		if($object){
-			$query->setFetchMode( PDO::FETCH_INTO, $this);
+			$query->setFetchMode( \PDO::FETCH_INTO, $this);
 		}else{
-			$query->setFetchMode( PDO::FETCH_ASSOC);
+			$query->setFetchMode( \PDO::FETCH_ASSOC);
 		}
 
 		$query->execute( $where );

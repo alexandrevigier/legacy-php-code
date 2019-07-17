@@ -1,5 +1,11 @@
 <?php
-class Users extends BaseSQL{
+
+namespace models;
+
+use core\BaseSQL;
+use core\Routing;
+
+class Users extends BaseSQL {
 
 	public $id = null;
 	public $firstname;
@@ -37,7 +43,7 @@ class Users extends BaseSQL{
 		return [
 					"config"=>[ 
 						"method"=>"POST", 
-						"action"=>Routing::getSlug("Users", "save"), 
+						"action"=>Routing::getSlug("Users", "save"),
 						"class"=>"", 
 						"id"=>"",
 						"submit"=>"S'inscrire",
