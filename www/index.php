@@ -1,10 +1,11 @@
 <?php
 
 require "conf.inc.php";
+use core\Routing;
 
 function myAutoloader($class){
-	$classPath = "core/".$class.".class.php";
-	$classModel = "models/".$class.".class.php";
+	$classPath = str_replace('\\',DIRECTORY_SEPARATOR,$class).'.class.php';
+	$classModel = str_replace('\\',DIRECTORY_SEPARATOR,$class).'.class.php';
 	if(file_exists($classPath)){
 		include $classPath;
 	}else if(file_exists($classModel)){
@@ -21,8 +22,12 @@ $routes = Routing::getRoute($slug);
 extract($routes);
 
 // Vérifie l'existence du fichier et de la classe pour charger le controlleur
+
 if( file_exists($cPath) ){
 	include $cPath;
+
+	$c = 'controllers\\'. $c;
+
 	if( class_exists($c)){
 		//instancier dynamiquement le controller
 		$cObject = new $c();

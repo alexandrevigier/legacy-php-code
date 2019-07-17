@@ -2,9 +2,6 @@
 
 namespace core;
 
-use controller\PageController;
-use controller\UsersController;
-
 class BaseSQL{
 
 	private $pdo;
