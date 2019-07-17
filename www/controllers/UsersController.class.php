@@ -1,4 +1,10 @@
-<?php
+ <?php
+
+ namespace controllers;
+
+use core\Users;
+use core\Validator;
+use core\View;
 
 class UsersController{
 
@@ -17,7 +23,10 @@ class UsersController{
 		
 	}
 
-	public function saveAction(){
+    /**
+     *
+     */
+    public function saveAction(){
 
 		$user = new Users();
 		$form = $user->getRegisterForm();

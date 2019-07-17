@@ -1,4 +1,8 @@
 <?php
+
+namespace core;
+
+
 class Validator{
 
 	public $errors = [];
