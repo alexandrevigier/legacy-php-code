@@ -1,4 +1,7 @@
 <?php
+
+namespace models;
+
 class Users extends BaseSQL{
 
 	public $id = null;
