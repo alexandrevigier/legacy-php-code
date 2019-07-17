@@ -1,13 +1,16 @@
 <?php
 
+use Core\Routing;
+
 require "conf.inc.php";
 
-function myAutoloader($class){
-	$classPath = "core/".$class.".class.php";
-	$classModel = "models/".$class.".class.php";
-	if(file_exists($classPath)){
+
+function myAutoloader($class) {
+    $classPath = str_replace('\\', DIRECTORY_SEPARATOR, $class).'.class.php';
+    $classModel = str_replace('\\', DIRECTORY_SEPARATOR, $class).'.class.php';
+	if (file_exists($classPath)) {
 		include $classPath;
-	}else if(file_exists($classModel)){
+	} else if (file_exists($classModel)) {
 		include $classModel;
 	}
 }
@@ -21,22 +24,24 @@ $routes = Routing::getRoute($slug);
 extract($routes);
 
 // Vérifie l'existence du fichier et de la classe pour charger le controlleur
-if( file_exists($cPath) ){
+if ( file_exists($cPath) ) {
 	include $cPath;
-	if( class_exists($c)){
+    $c = 'controllers\\' . $c;
+
+	if ( class_exists($c)) {
 		//instancier dynamiquement le controller
 		$cObject = new $c();
 		//vérifier que la méthode (l'action) existe
-		if( method_exists($cObject, $a) ){
+		if ( method_exists($cObject, $a) ) {
 			//appel dynamique de la méthode	
 			$cObject->$a();
-		}else{
+		} else {
 			die("La methode ".$a." n'existe pas");
 		}
 		
-	}else{
+	} else {
 		die("La class controller ".$c." n'existe pas");
 	}
-}else{
+} else {
 	die("Le fichier controller ".$c." n'existe pas");
 }
